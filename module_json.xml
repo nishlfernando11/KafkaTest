@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_json" default="compile.module.json">
+  <dirname property="module.json.basedir" file="${ant.file.module_json}"/>
+  
+  <property name="module.jdk.home.json" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.json" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.json" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.json" value="${compiler.args}"/>
+  
+  <property name="json.output.dir" value="${module.json.basedir}/out/production/json"/>
+  <property name="json.testoutput.dir" value="${module.json.basedir}/out/test/json"/>
+  
+  <path id="json.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="json.module.production.classpath">
+    <path refid="${module.jdk.classpath.json}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+  </path>
+  
+  <path id="json.runtime.production.module.classpath">
+    <pathelement location="${json.output.dir}"/>
+    <path refid="api.runtime.production.module.classpath"/>
+    <path refid="clients.runtime.production.module.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+  </path>
+  
+  <path id="json.module.classpath">
+    <path refid="${module.jdk.classpath.json}"/>
+    <pathelement location="${json.output.dir}"/>
+    <pathelement location="${api.testoutput.dir}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${clients.testoutput.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.powermock-api-support-1.6.4.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.powermock-module-junit4-common-1.6.4.classpath"/>
+    <path refid="library.javassist-3.20.0-ga.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.easymock-3.4.classpath"/>
+    <path refid="library.cglib-nodep-2.2.2.classpath"/>
+    <path refid="library.powermock-api-easymock-1.6.4.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.powermock-core-1.6.4.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.powermock-reflect-1.6.4.classpath"/>
+    <path refid="library.objenesis-2.2.classpath"/>
+    <path refid="library.powermock-module-junit4-1.6.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+  </path>
+  
+  <path id="json.runtime.module.classpath">
+    <pathelement location="${json.testoutput.dir}"/>
+    <pathelement location="${json.output.dir}"/>
+    <path refid="api.runtime.module.classpath"/>
+    <path refid="clients.runtime.module.classpath"/>
+    <path refid="library.powermock-api-support-1.6.4.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.powermock-module-junit4-common-1.6.4.classpath"/>
+    <path refid="library.javassist-3.20.0-ga.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.easymock-3.4.classpath"/>
+    <path refid="library.cglib-nodep-2.2.2.classpath"/>
+    <path refid="library.powermock-api-easymock-1.6.4.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.powermock-core-1.6.4.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.powermock-reflect-1.6.4.classpath"/>
+    <path refid="library.objenesis-2.2.classpath"/>
+    <path refid="library.powermock-module-junit4-1.6.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.json">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.json">
+    <patternset refid="excluded.from.module.json"/>
+  </patternset>
+  
+  <path id="json.module.sourcepath">
+    <dirset dir="${module.json.basedir}/connect/json">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="json.module.test.sourcepath">
+    <dirset dir="${module.json.basedir}/connect/json">
+      <include name="src/test/resources"/>
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.json" depends="compile.module.json.production,compile.module.json.tests" description="Compile module json"/>
+  
+  <target name="compile.module.json.production" depends="register.custom.compilers,compile.module.api,compile.module.clients" description="Compile module json; production classes">
+    <mkdir dir="${json.output.dir}"/>
+    <javac2 destdir="${json.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.json}/javac">
+      <compilerarg line="${compiler.args.json}"/>
+      <bootclasspath refid="json.module.bootclasspath"/>
+      <classpath refid="json.module.production.classpath"/>
+      <src refid="json.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.json"/>
+    </javac2>
+    
+    <copy todir="${json.output.dir}">
+      <fileset dir="${module.json.basedir}/connect/json/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.json.tests" depends="register.custom.compilers,compile.module.json.production" description="compile module json; test classes" unless="skip.tests">
+    <mkdir dir="${json.testoutput.dir}"/>
+    <javac2 destdir="${json.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.json}/javac">
+      <compilerarg line="${compiler.args.json}"/>
+      <bootclasspath refid="json.module.bootclasspath"/>
+      <classpath refid="json.module.classpath"/>
+      <src refid="json.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.json"/>
+    </javac2>
+    
+    <copy todir="${json.testoutput.dir}">
+      <fileset dir="${module.json.basedir}/connect/json/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.json.basedir}/connect/json/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.json" description="cleanup module">
+    <delete dir="${json.output.dir}"/>
+    <delete dir="${json.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_kafka" default="compile.module.kafka">
+  <dirname property="module.kafka.basedir" file="${ant.file.module_kafka}"/>
+  
+  <property name="module.jdk.home.kafka" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.kafka" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.kafka" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.kafka" value="${compiler.args}"/>
+  
+  <property name="kafka.output.dir" value="${module.kafka.basedir}/out/production/kafka"/>
+  <property name="kafka.testoutput.dir" value="${module.kafka.basedir}/out/test/kafka"/>
+  
+  <path id="kafka.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="kafka.module.production.classpath">
+    <path refid="${module.jdk.classpath.kafka}"/>
+  </path>
+  
+  <path id="kafka.runtime.production.module.classpath">
+    <pathelement location="${kafka.output.dir}"/>
+  </path>
+  
+  <path id="kafka.module.classpath">
+    <path refid="${module.jdk.classpath.kafka}"/>
+    <pathelement location="${kafka.output.dir}"/>
+  </path>
+  
+  <path id="kafka.runtime.module.classpath">
+    <pathelement location="${kafka.testoutput.dir}"/>
+    <pathelement location="${kafka.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.kafka">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.kafka">
+    <patternset refid="excluded.from.module.kafka"/>
+  </patternset>
+  
+  
+  <target name="compile.module.kafka" depends="compile.module.kafka.production,compile.module.kafka.tests" description="Compile module kafka"/>
+  
+  <target name="compile.module.kafka.production" depends="register.custom.compilers" description="Compile module kafka; production classes"/>
+  
+  <target name="compile.module.kafka.tests" depends="register.custom.compilers,compile.module.kafka.production" description="compile module kafka; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.kafka" description="cleanup module">
+    <delete dir="${kafka.output.dir}"/>
+    <delete dir="${kafka.testoutput.dir}"/>
+  </target>
+</project>

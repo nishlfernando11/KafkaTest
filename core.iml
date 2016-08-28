@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="scala" name="Scala">
+      <configuration>
+        <option name="compilerLibraryLevel" value="Project" />
+        <option name="compilerLibraryName" value="scala-library-2.10.6" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/core">
+      <sourceFolder url="file://$MODULE_DIR$/core/src/main/scala" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/src/test/resources" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/core/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/core/src/test/scala" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/core/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/core/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="clients" exported="" />
+    <orderEntry type="library" scope="TEST" name="apacheds-core-constants-2.0.0-M21" level="project" />
+    <orderEntry type="library" name="log4j-1.2.17" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-extras-util-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.apache.servicemix.bundles.antlr-2.7.7_5" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-mavibot-partition-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-ldif-partition-2.0.0-M21" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="commons-lang-2.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-protocol-kerberos-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-xdbm-partition-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptor-kerberos-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-extras-sp-1.0.0-M33" level="project" />
+    <orderEntry type="library" name="zookeeper-3.4.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-core-api-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-admin-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-kerberos-codec-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-jdbm1-2.0.0-M3" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-normalization-2.0.0-M21" level="project" />
+    <orderEntry type="library" name="slf4j-api-1.7.21" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-extras-aci-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-journal-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-protocol-ldap-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="bcprov-jdk15on-1.54" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.apache.servicemix.bundles.xpp3-1.1.4c_6" level="project" />
+    <orderEntry type="library" name="slf4j-log4j12-1.7.21" level="project" />
+    <orderEntry type="library" name="zkclient-0.8" level="project" />
+    <orderEntry type="library" scope="TEST" name="commons-io-2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="bcpkix-jdk15on-1.54" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-operational-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-i18n-1.0.0-M33" level="project" />
+    <orderEntry type="library" exported="" name="scala-library-2.10.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="scala-reflect-2.10.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-all-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="org.apache.servicemix.bundles.dom4j-1.6.1_5" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-authz-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-codec-core-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="mavibot-1.0.0-M8" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-exception-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-protocol-shared-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-core-2.0.0-M21" level="project" />
+    <orderEntry type="library" name="lz4-1.3.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="objenesis-2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="commons-pool-1.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-extras-codec-1.0.0-M33" level="project" />
+    <orderEntry type="library" name="metrics-core-2.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-core-avl-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-referral-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-trigger-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-core-shared-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="commons-collections-3.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-util-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-schema-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="scalatest_2.10-2.2.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-changelog-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-model-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-authn-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-asn1-api-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-client-api-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-i18n-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-extras-trigger-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="junit-4.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-event-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-subtree-2.0.0-M21" level="project" />
+    <orderEntry type="library" name="snappy-java-1.1.2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-number-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-jdbm-partition-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="mina-core-2.0.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="ehcache-2.8.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-ldap-extras-codec-api-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="api-asn1-ber-1.0.0-M33" level="project" />
+    <orderEntry type="library" scope="TEST" name="easymock-3.4" level="project" />
+    <orderEntry type="library" name="jopt-simple-4.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="apacheds-interceptors-collective-2.0.0-M21" level="project" />
+    <orderEntry type="library" scope="TEST" name="classes-test" level="project" />
+    <orderEntry type="library" scope="TEST" name="build-test-test" level="project" />
+  </component>
+</module>
+

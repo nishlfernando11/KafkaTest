@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_file" default="compile.module.file">
+  <dirname property="module.file.basedir" file="${ant.file.module_file}"/>
+  
+  <property name="module.jdk.home.file" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.file" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.file" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.file" value="${compiler.args}"/>
+  
+  <property name="file.output.dir" value="${module.file.basedir}/out/production/file"/>
+  <property name="file.testoutput.dir" value="${module.file.basedir}/out/test/file"/>
+  
+  <path id="file.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="file.module.production.classpath">
+    <path refid="${module.jdk.classpath.file}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+  </path>
+  
+  <path id="file.runtime.production.module.classpath">
+    <pathelement location="${file.output.dir}"/>
+    <path refid="api.runtime.production.module.classpath"/>
+    <path refid="clients.runtime.production.module.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+  </path>
+  
+  <path id="file.module.classpath">
+    <path refid="${module.jdk.classpath.file}"/>
+    <pathelement location="${file.output.dir}"/>
+    <pathelement location="${api.testoutput.dir}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${clients.testoutput.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.powermock-module-junit4-1.6.4.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.powermock-reflect-1.6.4.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.cglib-nodep-2.2.2.classpath"/>
+    <path refid="library.powermock-api-support-1.6.4.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.javassist-3.20.0-ga.classpath"/>
+    <path refid="library.powermock-core-1.6.4.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.powermock-api-easymock-1.6.4.classpath"/>
+    <path refid="library.powermock-module-junit4-common-1.6.4.classpath"/>
+    <path refid="library.easymock-3.4.classpath"/>
+    <path refid="library.objenesis-2.2.classpath"/>
+  </path>
+  
+  <path id="file.runtime.module.classpath">
+    <pathelement location="${file.testoutput.dir}"/>
+    <pathelement location="${file.output.dir}"/>
+    <path refid="api.runtime.module.classpath"/>
+    <path refid="clients.runtime.module.classpath"/>
+    <path refid="library.powermock-module-junit4-1.6.4.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.powermock-reflect-1.6.4.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.cglib-nodep-2.2.2.classpath"/>
+    <path refid="library.powermock-api-support-1.6.4.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.javassist-3.20.0-ga.classpath"/>
+    <path refid="library.powermock-core-1.6.4.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.powermock-api-easymock-1.6.4.classpath"/>
+    <path refid="library.powermock-module-junit4-common-1.6.4.classpath"/>
+    <path refid="library.easymock-3.4.classpath"/>
+    <path refid="library.objenesis-2.2.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.file">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.file">
+    <patternset refid="excluded.from.module.file"/>
+  </patternset>
+  
+  <path id="file.module.sourcepath">
+    <dirset dir="${module.file.basedir}/connect/file">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="file.module.test.sourcepath">
+    <dirset dir="${module.file.basedir}/connect/file">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.file" depends="compile.module.file.production,compile.module.file.tests" description="Compile module file"/>
+  
+  <target name="compile.module.file.production" depends="register.custom.compilers,compile.module.api,compile.module.clients" description="Compile module file; production classes">
+    <mkdir dir="${file.output.dir}"/>
+    <javac2 destdir="${file.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.file}/javac">
+      <compilerarg line="${compiler.args.file}"/>
+      <bootclasspath refid="file.module.bootclasspath"/>
+      <classpath refid="file.module.production.classpath"/>
+      <src refid="file.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.file"/>
+    </javac2>
+    
+    <copy todir="${file.output.dir}">
+      <fileset dir="${module.file.basedir}/connect/file/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.file.tests" depends="register.custom.compilers,compile.module.file.production" description="compile module file; test classes" unless="skip.tests">
+    <mkdir dir="${file.testoutput.dir}"/>
+    <javac2 destdir="${file.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.file}/javac">
+      <compilerarg line="${compiler.args.file}"/>
+      <bootclasspath refid="file.module.bootclasspath"/>
+      <classpath refid="file.module.classpath"/>
+      <src refid="file.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.file"/>
+    </javac2>
+    
+    <copy todir="${file.testoutput.dir}">
+      <fileset dir="${module.file.basedir}/connect/file/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.file" description="cleanup module">
+    <delete dir="${file.output.dir}"/>
+    <delete dir="${file.testoutput.dir}"/>
+  </target>
+</project>

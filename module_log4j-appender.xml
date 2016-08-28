@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_log4j-appender" default="compile.module.log4j-appender">
+  <dirname property="module.log4j-appender.basedir" file="${ant.file.module_log4j-appender}"/>
+  
+  <property name="module.jdk.home.log4j-appender" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.log4j-appender" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.log4j-appender" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.log4j-appender" value="${compiler.args}"/>
+  
+  <property name="log4j-appender.output.dir" value="${module.log4j-appender.basedir}/out/production/log4j-appender"/>
+  <property name="log4j-appender.testoutput.dir" value="${module.log4j-appender.basedir}/out/test/log4j-appender"/>
+  
+  <path id="log4j-appender.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="log4j-appender.module.production.classpath">
+    <path refid="${module.jdk.classpath.log4j-appender}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+  </path>
+  
+  <path id="log4j-appender.runtime.production.module.classpath">
+    <pathelement location="${log4j-appender.output.dir}"/>
+    <path refid="clients.runtime.production.module.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+  </path>
+  
+  <path id="log4j-appender.module.classpath">
+    <path refid="${module.jdk.classpath.log4j-appender}"/>
+    <pathelement location="${log4j-appender.output.dir}"/>
+    <pathelement location="${clients.testoutput.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.build-test.classpath"/>
+    <path refid="library.classes-test.classpath"/>
+  </path>
+  
+  <path id="log4j-appender.runtime.module.classpath">
+    <pathelement location="${log4j-appender.testoutput.dir}"/>
+    <pathelement location="${log4j-appender.output.dir}"/>
+    <path refid="clients.runtime.module.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.build-test.classpath"/>
+    <path refid="library.classes-test.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.log4j-appender">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.log4j-appender">
+    <patternset refid="excluded.from.module.log4j-appender"/>
+  </patternset>
+  
+  <path id="log4j-appender.module.sourcepath">
+    <dirset dir="${module.log4j-appender.basedir}/log4j-appender">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="log4j-appender.module.test.sourcepath">
+    <dirset dir="${module.log4j-appender.basedir}/log4j-appender">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.log4j-appender" depends="compile.module.log4j-appender.production,compile.module.log4j-appender.tests" description="Compile module log4j-appender"/>
+  
+  <target name="compile.module.log4j-appender.production" depends="register.custom.compilers,compile.module.clients" description="Compile module log4j-appender; production classes">
+    <mkdir dir="${log4j-appender.output.dir}"/>
+    <javac2 destdir="${log4j-appender.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.log4j-appender}/javac">
+      <compilerarg line="${compiler.args.log4j-appender}"/>
+      <bootclasspath refid="log4j-appender.module.bootclasspath"/>
+      <classpath refid="log4j-appender.module.production.classpath"/>
+      <src refid="log4j-appender.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.log4j-appender"/>
+    </javac2>
+    
+    <copy todir="${log4j-appender.output.dir}">
+      <fileset dir="${module.log4j-appender.basedir}/log4j-appender/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.log4j-appender.tests" depends="register.custom.compilers,compile.module.log4j-appender.production" description="compile module log4j-appender; test classes" unless="skip.tests">
+    <mkdir dir="${log4j-appender.testoutput.dir}"/>
+    <javac2 destdir="${log4j-appender.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.log4j-appender}/javac">
+      <compilerarg line="${compiler.args.log4j-appender}"/>
+      <bootclasspath refid="log4j-appender.module.bootclasspath"/>
+      <classpath refid="log4j-appender.module.classpath"/>
+      <src refid="log4j-appender.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.log4j-appender"/>
+    </javac2>
+    
+    <copy todir="${log4j-appender.testoutput.dir}">
+      <fileset dir="${module.log4j-appender.basedir}/log4j-appender/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.log4j-appender" description="cleanup module">
+    <delete dir="${log4j-appender.output.dir}"/>
+    <delete dir="${log4j-appender.testoutput.dir}"/>
+  </target>
+</project>

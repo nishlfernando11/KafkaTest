@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_runtime" default="compile.module.runtime">
+  <dirname property="module.runtime.basedir" file="${ant.file.module_runtime}"/>
+  
+  <property name="module.jdk.home.runtime" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.runtime" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.runtime" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.runtime" value="${compiler.args}"/>
+  
+  <property name="runtime.output.dir" value="${module.runtime.basedir}/out/production/runtime"/>
+  <property name="runtime.testoutput.dir" value="${module.runtime.basedir}/out/test/runtime"/>
+  
+  <path id="runtime.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="runtime.module.production.classpath">
+    <path refid="${module.jdk.classpath.runtime}"/>
+    <pathelement location="${tools.output.dir}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <pathelement location="${log4j-appender.output.dir}"/>
+    <path refid="library.jetty-http-9.2.15.v20160210.classpath"/>
+    <path refid="library.jackson-jaxrs-json-provider-2.6.3.classpath"/>
+    <path refid="library.javax.ws.rs-api-2.0.1.classpath"/>
+    <path refid="library.jetty-io-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-container-servlet-core-2.22.2.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.jersey-container-servlet-2.22.2.classpath"/>
+    <path refid="library.jetty-security-9.2.15.v20160210.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.javax.inject-1.classpath"/>
+    <path refid="library.osgi-resource-locator-1.0.1.classpath"/>
+    <path refid="library.jetty-continuation-9.2.15.v20160210.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.jersey-guava-2.22.2.classpath"/>
+    <path refid="library.javax.annotation-api-1.2.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.jackson-module-jaxb-annotations-2.6.3.classpath"/>
+    <path refid="library.javax.inject-2.4.0-b34.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.hk2-api-2.4.0-b34.classpath"/>
+    <path refid="library.aopalliance-repackaged-2.4.0-b34.classpath"/>
+    <path refid="library.jetty-servlet-9.2.15.v20160210.classpath"/>
+    <path refid="library.javassist-3.18.2-ga.classpath"/>
+    <path refid="library.hk2-locator-2.4.0-b34.classpath"/>
+    <path refid="library.argparse4j-0.5.0.classpath"/>
+    <path refid="library.jetty-util-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-common-2.22.2.classpath"/>
+    <path refid="library.validation-api-1.1.0.final.classpath"/>
+    <path refid="library.jackson-jaxrs-base-2.6.3.classpath"/>
+    <path refid="library.jetty-server-9.2.15.v20160210.classpath"/>
+    <path refid="library.javax.servlet-api-3.1.0.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.hk2-utils-2.4.0-b34.classpath"/>
+    <path refid="library.jersey-server-2.22.2.classpath"/>
+    <path refid="library.reflections-0.9.10.classpath"/>
+    <path refid="library.jersey-media-jaxb-2.22.2.classpath"/>
+    <path refid="library.jetty-servlets-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-client-2.22.2.classpath"/>
+    <path refid="library.guava-18.0.classpath"/>
+  </path>
+  
+  <path id="runtime.runtime.production.module.classpath">
+    <pathelement location="${runtime.output.dir}"/>
+    <path refid="tools.runtime.production.module.classpath"/>
+    <path refid="api.runtime.production.module.classpath"/>
+    <path refid="clients.runtime.production.module.classpath"/>
+    <path refid="log4j-appender.runtime.production.module.classpath"/>
+    <path refid="library.jetty-http-9.2.15.v20160210.classpath"/>
+    <path refid="library.jackson-jaxrs-json-provider-2.6.3.classpath"/>
+    <path refid="library.javax.ws.rs-api-2.0.1.classpath"/>
+    <path refid="library.jetty-io-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-container-servlet-core-2.22.2.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.jersey-container-servlet-2.22.2.classpath"/>
+    <path refid="library.jetty-security-9.2.15.v20160210.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.javax.inject-1.classpath"/>
+    <path refid="library.osgi-resource-locator-1.0.1.classpath"/>
+    <path refid="library.jetty-continuation-9.2.15.v20160210.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.jersey-guava-2.22.2.classpath"/>
+    <path refid="library.javax.annotation-api-1.2.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.jackson-module-jaxb-annotations-2.6.3.classpath"/>
+    <path refid="library.javax.inject-2.4.0-b34.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.hk2-api-2.4.0-b34.classpath"/>
+    <path refid="library.aopalliance-repackaged-2.4.0-b34.classpath"/>
+    <path refid="library.jetty-servlet-9.2.15.v20160210.classpath"/>
+    <path refid="library.javassist-3.18.2-ga.classpath"/>
+    <path refid="library.hk2-locator-2.4.0-b34.classpath"/>
+    <path refid="library.argparse4j-0.5.0.classpath"/>
+    <path refid="library.jetty-util-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-common-2.22.2.classpath"/>
+    <path refid="library.validation-api-1.1.0.final.classpath"/>
+    <path refid="library.jackson-jaxrs-base-2.6.3.classpath"/>
+    <path refid="library.jetty-server-9.2.15.v20160210.classpath"/>
+    <path refid="library.javax.servlet-api-3.1.0.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.hk2-utils-2.4.0-b34.classpath"/>
+    <path refid="library.jersey-server-2.22.2.classpath"/>
+    <path refid="library.reflections-0.9.10.classpath"/>
+    <path refid="library.jersey-media-jaxb-2.22.2.classpath"/>
+    <path refid="library.jetty-servlets-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-client-2.22.2.classpath"/>
+    <path refid="library.guava-18.0.classpath"/>
+  </path>
+  
+  <path id="runtime.module.classpath">
+    <path refid="${module.jdk.classpath.runtime}"/>
+    <pathelement location="${runtime.output.dir}"/>
+    <pathelement location="${tools.testoutput.dir}"/>
+    <pathelement location="${tools.output.dir}"/>
+    <pathelement location="${api.testoutput.dir}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${clients.testoutput.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <pathelement location="${json.testoutput.dir}"/>
+    <pathelement location="${json.output.dir}"/>
+    <pathelement location="${log4j-appender.testoutput.dir}"/>
+    <pathelement location="${log4j-appender.output.dir}"/>
+    <path refid="library.javassist-3.20.0-ga.classpath"/>
+    <path refid="library.jetty-http-9.2.15.v20160210.classpath"/>
+    <path refid="library.jackson-jaxrs-json-provider-2.6.3.classpath"/>
+    <path refid="library.javax.ws.rs-api-2.0.1.classpath"/>
+    <path refid="library.jetty-io-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-container-servlet-core-2.22.2.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.jersey-container-servlet-2.22.2.classpath"/>
+    <path refid="library.jetty-security-9.2.15.v20160210.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.easymock-3.4.classpath"/>
+    <path refid="library.javax.inject-1.classpath"/>
+    <path refid="library.powermock-api-easymock-1.6.4.classpath"/>
+    <path refid="library.osgi-resource-locator-1.0.1.classpath"/>
+    <path refid="library.powermock-reflect-1.6.4.classpath"/>
+    <path refid="library.jetty-continuation-9.2.15.v20160210.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.jersey-guava-2.22.2.classpath"/>
+    <path refid="library.javax.annotation-api-1.2.classpath"/>
+    <path refid="library.powermock-api-support-1.6.4.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.jackson-module-jaxb-annotations-2.6.3.classpath"/>
+    <path refid="library.javax.inject-2.4.0-b34.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.powermock-module-junit4-1.6.4.classpath"/>
+    <path refid="library.hk2-api-2.4.0-b34.classpath"/>
+    <path refid="library.aopalliance-repackaged-2.4.0-b34.classpath"/>
+    <path refid="library.jetty-servlet-9.2.15.v20160210.classpath"/>
+    <path refid="library.powermock-core-1.6.4.classpath"/>
+    <path refid="library.javassist-3.18.2-ga.classpath"/>
+    <path refid="library.hk2-locator-2.4.0-b34.classpath"/>
+    <path refid="library.argparse4j-0.5.0.classpath"/>
+    <path refid="library.jetty-util-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-common-2.22.2.classpath"/>
+    <path refid="library.validation-api-1.1.0.final.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.jackson-jaxrs-base-2.6.3.classpath"/>
+    <path refid="library.jetty-server-9.2.15.v20160210.classpath"/>
+    <path refid="library.javax.servlet-api-3.1.0.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.hk2-utils-2.4.0-b34.classpath"/>
+    <path refid="library.jersey-server-2.22.2.classpath"/>
+    <path refid="library.objenesis-2.2.classpath"/>
+    <path refid="library.cglib-nodep-2.2.2.classpath"/>
+    <path refid="library.reflections-0.9.10.classpath"/>
+    <path refid="library.jersey-media-jaxb-2.22.2.classpath"/>
+    <path refid="library.powermock-module-junit4-common-1.6.4.classpath"/>
+    <path refid="library.jetty-servlets-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-client-2.22.2.classpath"/>
+    <path refid="library.guava-18.0.classpath"/>
+    <path refid="library.build-test.classpath"/>
+    <path refid="library.classes-test.classpath"/>
+  </path>
+  
+  <path id="runtime.runtime.module.classpath">
+    <pathelement location="${runtime.testoutput.dir}"/>
+    <pathelement location="${runtime.output.dir}"/>
+    <path refid="tools.runtime.module.classpath"/>
+    <path refid="api.runtime.module.classpath"/>
+    <path refid="clients.runtime.module.classpath"/>
+    <path refid="json.runtime.module.classpath"/>
+    <path refid="log4j-appender.runtime.module.classpath"/>
+    <path refid="library.javassist-3.20.0-ga.classpath"/>
+    <path refid="library.jetty-http-9.2.15.v20160210.classpath"/>
+    <path refid="library.jackson-jaxrs-json-provider-2.6.3.classpath"/>
+    <path refid="library.javax.ws.rs-api-2.0.1.classpath"/>
+    <path refid="library.jetty-io-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-container-servlet-core-2.22.2.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.jersey-container-servlet-2.22.2.classpath"/>
+    <path refid="library.jetty-security-9.2.15.v20160210.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.easymock-3.4.classpath"/>
+    <path refid="library.javax.inject-1.classpath"/>
+    <path refid="library.powermock-api-easymock-1.6.4.classpath"/>
+    <path refid="library.osgi-resource-locator-1.0.1.classpath"/>
+    <path refid="library.powermock-reflect-1.6.4.classpath"/>
+    <path refid="library.jetty-continuation-9.2.15.v20160210.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.jersey-guava-2.22.2.classpath"/>
+    <path refid="library.javax.annotation-api-1.2.classpath"/>
+    <path refid="library.powermock-api-support-1.6.4.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.jackson-module-jaxb-annotations-2.6.3.classpath"/>
+    <path refid="library.javax.inject-2.4.0-b34.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.powermock-module-junit4-1.6.4.classpath"/>
+    <path refid="library.hk2-api-2.4.0-b34.classpath"/>
+    <path refid="library.aopalliance-repackaged-2.4.0-b34.classpath"/>
+    <path refid="library.jetty-servlet-9.2.15.v20160210.classpath"/>
+    <path refid="library.powermock-core-1.6.4.classpath"/>
+    <path refid="library.javassist-3.18.2-ga.classpath"/>
+    <path refid="library.hk2-locator-2.4.0-b34.classpath"/>
+    <path refid="library.argparse4j-0.5.0.classpath"/>
+    <path refid="library.jetty-util-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-common-2.22.2.classpath"/>
+    <path refid="library.validation-api-1.1.0.final.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+    <path refid="library.jackson-jaxrs-base-2.6.3.classpath"/>
+    <path refid="library.jetty-server-9.2.15.v20160210.classpath"/>
+    <path refid="library.javax.servlet-api-3.1.0.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.hk2-utils-2.4.0-b34.classpath"/>
+    <path refid="library.jersey-server-2.22.2.classpath"/>
+    <path refid="library.objenesis-2.2.classpath"/>
+    <path refid="library.cglib-nodep-2.2.2.classpath"/>
+    <path refid="library.reflections-0.9.10.classpath"/>
+    <path refid="library.jersey-media-jaxb-2.22.2.classpath"/>
+    <path refid="library.powermock-module-junit4-common-1.6.4.classpath"/>
+    <path refid="library.jetty-servlets-9.2.15.v20160210.classpath"/>
+    <path refid="library.jersey-client-2.22.2.classpath"/>
+    <path refid="library.guava-18.0.classpath"/>
+    <path refid="library.build-test.classpath"/>
+    <path refid="library.classes-test.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.runtime">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.runtime">
+    <patternset refid="excluded.from.module.runtime"/>
+  </patternset>
+  
+  <path id="runtime.module.sourcepath">
+    <dirset dir="${module.runtime.basedir}/connect/runtime">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="runtime.module.test.sourcepath">
+    <dirset dir="${module.runtime.basedir}/connect/runtime">
+      <include name="src/test/resources"/>
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.runtime" depends="compile.module.runtime.production,compile.module.runtime.tests" description="Compile module runtime"/>
+  
+  <target name="compile.module.runtime.production" depends="register.custom.compilers,compile.module.tools,compile.module.api,compile.module.clients,compile.module.json,compile.module.log4j-appender" description="Compile module runtime; production classes">
+    <mkdir dir="${runtime.output.dir}"/>
+    <javac2 destdir="${runtime.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.runtime}/javac">
+      <compilerarg line="${compiler.args.runtime}"/>
+      <bootclasspath refid="runtime.module.bootclasspath"/>
+      <classpath refid="runtime.module.production.classpath"/>
+      <src refid="runtime.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.runtime"/>
+    </javac2>
+    
+    <copy todir="${runtime.output.dir}">
+      <fileset dir="${module.runtime.basedir}/connect/runtime/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.runtime.tests" depends="register.custom.compilers,compile.module.runtime.production" description="compile module runtime; test classes" unless="skip.tests">
+    <mkdir dir="${runtime.testoutput.dir}"/>
+    <javac2 destdir="${runtime.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.runtime}/javac">
+      <compilerarg line="${compiler.args.runtime}"/>
+      <bootclasspath refid="runtime.module.bootclasspath"/>
+      <classpath refid="runtime.module.classpath"/>
+      <src refid="runtime.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.runtime"/>
+    </javac2>
+    
+    <copy todir="${runtime.testoutput.dir}">
+      <fileset dir="${module.runtime.basedir}/connect/runtime/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.runtime.basedir}/connect/runtime/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.runtime" description="cleanup module">
+    <delete dir="${runtime.output.dir}"/>
+    <delete dir="${runtime.testoutput.dir}"/>
+  </target>
+</project>

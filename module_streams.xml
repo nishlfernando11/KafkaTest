@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_streams" default="compile.module.streams">
+  <dirname property="module.streams.basedir" file="${ant.file.module_streams}"/>
+  
+  <property name="module.jdk.home.streams" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.streams" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.streams" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.streams" value="${compiler.args}"/>
+  
+  <property name="streams.output.dir" value="${module.streams.basedir}/out/production/streams"/>
+  <property name="streams.testoutput.dir" value="${module.streams.basedir}/out/test/streams"/>
+  
+  <path id="streams.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="streams.module.production.classpath">
+    <path refid="${module.jdk.classpath.streams}"/>
+    <pathelement location="${json.output.dir}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.rocksdbjni-4.4.1.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.zkclient-0.8.classpath"/>
+    <path refid="library.zookeeper-3.4.6.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+  </path>
+  
+  <path id="streams.runtime.production.module.classpath">
+    <pathelement location="${streams.output.dir}"/>
+    <path refid="json.runtime.production.module.classpath"/>
+    <path refid="api.runtime.production.module.classpath"/>
+    <path refid="clients.runtime.production.module.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.rocksdbjni-4.4.1.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.zkclient-0.8.classpath"/>
+    <path refid="library.zookeeper-3.4.6.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+  </path>
+  
+  <path id="streams.module.classpath">
+    <path refid="${module.jdk.classpath.streams}"/>
+    <pathelement location="${streams.output.dir}"/>
+    <path refid="library.classes-test-test.classpath"/>
+    <path refid="library.classes-test.classpath"/>
+    <path refid="library.build-test-test.classpath"/>
+    <path refid="library.build-test.classpath"/>
+    <pathelement location="${json.testoutput.dir}"/>
+    <pathelement location="${json.output.dir}"/>
+    <pathelement location="${api.testoutput.dir}"/>
+    <pathelement location="${api.output.dir}"/>
+    <pathelement location="${core.testoutput.dir}"/>
+    <pathelement location="${core.output.dir}"/>
+    <pathelement location="${clients.testoutput.dir}"/>
+    <pathelement location="${clients.output.dir}"/>
+    <path refid="library.scala-library-2.10.6.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.jopt-simple-4.9.classpath"/>
+    <path refid="library.rocksdbjni-4.4.1.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.zkclient-0.8.classpath"/>
+    <path refid="library.zookeeper-3.4.6.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.metrics-core-2.2.0.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+  </path>
+  
+  <path id="streams.runtime.module.classpath">
+    <pathelement location="${streams.testoutput.dir}"/>
+    <pathelement location="${streams.output.dir}"/>
+    <path refid="library.classes-test-test.classpath"/>
+    <path refid="library.classes-test.classpath"/>
+    <path refid="library.build-test-test.classpath"/>
+    <path refid="library.build-test.classpath"/>
+    <path refid="json.runtime.module.classpath"/>
+    <path refid="api.runtime.module.classpath"/>
+    <path refid="core.runtime.module.classpath"/>
+    <path refid="clients.runtime.module.classpath"/>
+    <path refid="library.scala-library-2.10.6.classpath"/>
+    <path refid="library.snappy-java-1.1.2.4.classpath"/>
+    <path refid="library.jackson-databind-2.6.3.classpath"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.jopt-simple-4.9.classpath"/>
+    <path refid="library.rocksdbjni-4.4.1.classpath"/>
+    <path refid="library.lz4-1.3.0.classpath"/>
+    <path refid="library.slf4j-log4j12-1.7.21.classpath"/>
+    <path refid="library.zkclient-0.8.classpath"/>
+    <path refid="library.zookeeper-3.4.6.classpath"/>
+    <path refid="library.jackson-core-2.6.3.classpath"/>
+    <path refid="library.metrics-core-2.2.0.classpath"/>
+    <path refid="library.jackson-annotations-2.6.0.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+    <path refid="library.slf4j-api-1.7.21.classpath"/>
+    <path refid="library.junit-4.12.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.streams">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.streams">
+    <patternset refid="excluded.from.module.streams"/>
+  </patternset>
+  
+  <path id="streams.module.sourcepath">
+    <dirset dir="${module.streams.basedir}/streams">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="streams.module.test.sourcepath">
+    <dirset dir="${module.streams.basedir}/streams">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.streams" depends="compile.module.streams.production,compile.module.streams.tests" description="Compile module streams"/>
+  
+  <target name="compile.module.streams.production" depends="register.custom.compilers,compile.module.json,compile.module.api,compile.module.core,compile.module.clients" description="Compile module streams; production classes">
+    <mkdir dir="${streams.output.dir}"/>
+    <javac2 destdir="${streams.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.streams}/javac">
+      <compilerarg line="${compiler.args.streams}"/>
+      <bootclasspath refid="streams.module.bootclasspath"/>
+      <classpath refid="streams.module.production.classpath"/>
+      <src refid="streams.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.streams"/>
+    </javac2>
+    
+    <copy todir="${streams.output.dir}">
+      <fileset dir="${module.streams.basedir}/streams/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.streams.tests" depends="register.custom.compilers,compile.module.streams.production" description="compile module streams; test classes" unless="skip.tests">
+    <mkdir dir="${streams.testoutput.dir}"/>
+    <javac2 destdir="${streams.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.streams}/javac">
+      <compilerarg line="${compiler.args.streams}"/>
+      <bootclasspath refid="streams.module.bootclasspath"/>
+      <classpath refid="streams.module.classpath"/>
+      <src refid="streams.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.streams"/>
+    </javac2>
+    
+    <copy todir="${streams.testoutput.dir}">
+      <fileset dir="${module.streams.basedir}/streams/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.streams" description="cleanup module">
+    <delete dir="${streams.output.dir}"/>
+    <delete dir="${streams.testoutput.dir}"/>
+  </target>
+</project>
